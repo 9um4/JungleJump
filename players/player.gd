@@ -10,7 +10,7 @@ const MOVE_WALK_MULTIPLIER: float = 0.7
 const MOVE_DASH_MULTIPLIER: float = 1.5
 
 # Default Vertical Move Multiplier
-const JUMP_CROUCH_MULTIPLIER: float = 1.2
+const JUMP_CROUCH_MULTIPLIER: float = 1.5
 
 # DEFAULT MAX CASTING TIME
 const JUMP_CROUCH_CHARGING_TIME: float = 1
@@ -81,7 +81,7 @@ func _physics_process(delta):
 				
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or jumpCount < maxJumpCount):
 		jumpCount += 1
-		velocity.y += DEFAULT_JUMP_VELOCITY * verticalMultiplier
+		velocity.y = DEFAULT_JUMP_VELOCITY * verticalMultiplier
 		sprite.play("jump")
 		if canHighJump:
 			verticalMultiplier /= JUMP_CROUCH_MULTIPLIER
